@@ -1,0 +1,185 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-hand: "Caveat", cursive;
+  --font-logo: "Grand Hotel", cursive;
+  --color-badge: var(--badge);
+  --color-link: var(--link);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-sand: var(--sand);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-stamp: var(--stamp);
+  --color-stamp-ink: var(--stamp-ink);
+  --color-moss: var(--moss);
+  --color-stamp-soft: var(--stamp-soft);
+  --color-stamp-glow: var(--stamp-glow);
+  --color-sky: var(--sky);
+  --color-grape: var(--grape);
+  --gradient-hero: var(--gradient-hero-v);
+  --color-demo: var(--demo);
+  --color-demo-foreground: var(--demo-foreground);
+  --shadow-postcard: var(--shadow-postcard-v);
+  --shadow-paper: var(--shadow-paper-v);
+}
+
+:root {
+  --radius: 0.875rem;
+  --paper: #F6F1E7;
+  --paper-raised: #FBF8F1;
+  --sand: #D9CDB4;
+  --line: #E4DAC4;
+  --ink: #1F2A37;
+  --ink-muted: #5B6676;
+  --stamp: #C8452D;
+  --stamp-soft: #F3DDD3;
+  --stamp-glow: #D9694F;
+  --stamp-ink: #A93822;
+  --moss: #4F6F52;
+  --sky: oklch(0.62 0.15 250);
+  --badge: oklch(0.63 0.24 22);
+  --link: oklch(0.62 0.19 250);
+  --grape: oklch(0.58 0.2 295);
+  --demo: oklch(0.9 0.14 95);
+  --demo-foreground: oklch(0.3 0.06 80);
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--paper-raised);
+  --card-foreground: var(--ink);
+  --popover: var(--paper-raised);
+  --popover-foreground: var(--ink);
+  --primary: var(--stamp);
+  --primary-foreground: var(--paper-raised);
+  --secondary: var(--line);
+  --secondary-foreground: var(--ink);
+  --muted: var(--line);
+  --muted-foreground: var(--ink-muted);
+  --accent: var(--line);
+  --accent-foreground: var(--ink);
+  --destructive: var(--stamp-ink);
+  --destructive-foreground: var(--paper-raised);
+  --border: var(--sand);
+  --input: var(--sand);
+  --ring: var(--stamp);
+
+  --shadow-postcard-v: 0 20px 40px -18px oklch(0.21 0.034 264.7 / 0.18), 0 2px 6px -2px oklch(0.21 0.034 264.7 / 0.06);
+  --shadow-paper-v: 0 10px 30px -14px oklch(0.21 0.034 264.7 / 0.14), 0 1px 2px oklch(0.21 0.034 264.7 / 0.04);
+  --gradient-hero-v: linear-gradient(140deg, #D9694F 0%, #C8452D 55%, #A93822 100%);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; letter-spacing: -0.025em; }
+}
+
+@utility paper-card {
+  background: var(--color-paper-raised);
+  border: 1px solid var(--color-sand);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-paper-v);
+}
+@utility postcard-frame {
+  background: var(--color-paper-raised);
+  padding: 0.75rem;
+  border-radius: 1.25rem !important;
+  border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-postcard-v);
+}
+@utility snap-rack {
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+@utility ruled {
+  background-image: repeating-linear-gradient(transparent 0 27px, var(--color-line) 27px 28px);
+}
+@utility wax {
+  background: radial-gradient(circle at 35% 30%, oklch(0.68 0.17 33), var(--color-stamp) 45%, var(--color-stamp-ink) 100%);
+  box-shadow: inset 0 -3px 6px oklch(0.35 0.1 33 / 0.5), 0 4px 10px oklch(0.35 0.1 33 / 0.35);
+}
+
+@keyframes stamp-in {
+  0% { transform: scale(2.2) rotate(-20deg); opacity: 0; }
+  60% { transform: scale(0.92) rotate(-8deg); opacity: 1; }
+  100% { transform: scale(1) rotate(-8deg); opacity: 1; }
+}
+@keyframes seal-left { to { transform: translateX(-40px) rotate(-35deg); opacity: 0; } }
+@keyframes seal-right { to { transform: translateX(40px) rotate(35deg); opacity: 0; } }
+@keyframes flap-open { to { transform: rotateX(180deg); } }
+@keyframes letter-rise { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(-50px); opacity: 1; } }
+@keyframes scanline { 0%,100% { top: 10%; } 50% { top: 85%; } }
+
+@utility animate-stamp { animation: stamp-in 0.55s cubic-bezier(.2,.8,.3,1.2) both; }
+@utility animate-seal-left { animation: seal-left 0.7s ease-in 0.2s forwards; }
+@utility animate-seal-right { animation: seal-right 0.7s ease-in 0.2s forwards; }
+@utility animate-flap { animation: flap-open 0.8s ease-in-out 0.8s forwards; transform-origin: top; }
+@utility animate-letter { animation: letter-rise 0.8s ease-out 1.5s both; }
+@utility animate-scan { animation: scanline 2.4s ease-in-out infinite; }
+
+@keyframes ride { 0% { transform: translateX(-140%); } 100% { transform: translateX(140%); } }
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes road { to { background-position: -80px 0; } }
+@keyframes rise-in { from { opacity: 0; transform: translateY(18px) scale(.96); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes speed { 0% { transform: translateX(40px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateX(-60px); opacity: 0; } }
+@keyframes ping-soft { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(2.6); opacity: 0; } }
+@keyframes float { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-10px) rotate(1deg); } }
+@keyframes grow { from { transform: scaleY(0); } }
+@keyframes growx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@utility animate-ride { animation: ride 2.6s cubic-bezier(.5,0,.5,1) infinite; }
+@utility animate-bob { animation: bob .35s ease-in-out infinite; }
+@utility animate-road { background-image: repeating-linear-gradient(90deg, var(--color-sand) 0 40px, transparent 40px 80px); animation: road .5s linear infinite; }
+@utility animate-rise { animation: rise-in .7s cubic-bezier(.2,.8,.2,1) both; }
+@utility animate-speed { animation: speed .7s linear infinite; }
+@utility animate-ping-soft { animation: ping-soft 1.6s ease-out infinite; }
+@utility animate-float { animation: float 5s ease-in-out infinite; }
+@utility animate-grow { animation: grow .8s cubic-bezier(.2,.8,.2,1) both; transform-origin: bottom; }
+@utility no-scrollbar { scrollbar-width: none; &::-webkit-scrollbar { display: none; } }
+@utility bg-gradient-hero { background-image: var(--gradient-hero-v); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; }
+}
+
+@utility story-ring { background: linear-gradient(45deg, oklch(0.84 0.16 85), oklch(0.7 0.2 47), oklch(0.6 0.25 10), oklch(0.55 0.25 340), oklch(0.5 0.22 300)); }
+@utility seen-ring { background: var(--color-sand); }
+@keyframes heart-pop { 0% { transform: scale(0); opacity: 0; } 15% { transform: scale(1.2); opacity: .95; } 30% { transform: scale(.95); } 45%,80% { transform: scale(1); opacity: .95; } 100% { transform: scale(1); opacity: 0; } }
+@utility animate-heart { animation: heart-pop 1s ease-out forwards; }
+@keyframes story-bar { from { width: 0; } to { width: 100%; } }
+@utility animate-story { animation: story-bar 5s linear forwards; }
